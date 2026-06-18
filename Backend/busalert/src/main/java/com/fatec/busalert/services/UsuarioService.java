@@ -17,6 +17,10 @@ public class UsuarioService {
 
     public UsuarioResponse cadastrar(UsuarioRequest request){
         
+        if (repository.findByEmail(request.email()).isPresent()) {
+            throw new RuntimeException("Email já cadastrado");
+        }
+        
         Usuario usuario = new Usuario();
 
         usuario.setNome(request.nome());
