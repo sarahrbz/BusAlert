@@ -3,6 +3,7 @@ package com.fatec.busalert.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fatec.busalert.dtos.LoginRequest;
 import com.fatec.busalert.dtos.UsuarioRequest;
 import com.fatec.busalert.dtos.UsuarioResponse;
 import com.fatec.busalert.entities.Usuario;
@@ -35,6 +36,23 @@ public class UsuarioService {
                 usuarioSalvo.getEmail()
         );
 
+    }
+
+    public UsuarioResponse login(LoginRequest request){
+        Usuario usuario = repository.findByEmail(request.email())
+                            .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+        
+        if(!usuario.getSenha().equals(request.senha())){
+            throw new RuntimeException("Senha inválida");
+        }
+
+        return new UsuarioResponse(
+            usuario.getId(),
+            usuario.getNome(),
+            usuario.getEmail()
+        );
+        
+                            
     }
     
 }
