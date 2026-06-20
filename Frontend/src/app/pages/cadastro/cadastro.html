@@ -1,30 +1,86 @@
-<h1>Cadastro BusAlert</h1>
+<div class="login-container">
 
-<div>
+  <div class="top-section">
 
-  <input
-    type="text"
-    placeholder="Nome"
-    [(ngModel)]="nome">
+  </div>
 
-  <br><br>
+  <div class="form-section">
 
-  <input
-    type="email"
-    placeholder="Email"
-    [(ngModel)]="email">
+    <h2>Criar Conta</h2>
 
-  <br><br>
+    <p>Cadastre-se para começar</p>
 
-  <input
-    type="password"
-    placeholder="Senha"
-    [(ngModel)]="senha">
+    <div class="input-group">
+      <input
+        type="text"
+        placeholder="Nome completo"
+        [(ngModel)]="nome">
+    </div>
 
-  <br><br>
+    <div class="input-group">
+      <input
+        type="email"
+        placeholder="E-mail"
+        [(ngModel)]="email">
+    </div>
 
-  <button (click)="cadastrar()">
-    Cadastrar
-  </button>
+    <div class="input-group">
+      <input
+        type="text"
+        placeholder="Telefone (opcional)"
+        [(ngModel)]="telefone">
+    </div>
+
+    <div class="input-group">
+      <input
+        type="password"
+        placeholder="Senha"
+        [(ngModel)]="senha">
+    </div>
+
+    <div class="input-group">
+      <input
+        type="password"
+        placeholder="Confirmar senha"
+        [(ngModel)]="confirmarSenha">
+    </div>
+
+    <button (click)="cadastrar()">
+      Criar Conta
+    </button>
+
+    <div class="divider">
+      <div class="line"></div>
+
+      <span>ou cadastre-se com</span>
+
+      <div class="line"></div>
+    </div>
+
+    <div class="social-buttons">
+
+      <button class="social-btn">
+        <i class="fab fa-google"></i>
+        Google
+      </button>
+
+      <button class="social-btn">
+        <i class="fab fa-apple"></i>
+        Apple
+      </button>
+
+    </div>
+
+    <div class="register">
+
+      Já possui uma conta?
+
+      <a routerLink="/login">
+        Entrar >
+      </a>
+
+    </div>
+
+  </div>
 
 </div>
