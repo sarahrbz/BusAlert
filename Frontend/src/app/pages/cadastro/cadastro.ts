@@ -33,6 +33,18 @@ export class Cadastro {
       return;
     }
 
+    if(!this.email.trim()){
+      alert('Por favor, informe um e-mail.');
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(this.email)) {
+      alert('Informe um e-mail válido.');
+      return;
+    }
+
     this.auth.cadastrar(usuario)
       .subscribe({
         next: (response) => {
@@ -46,4 +58,20 @@ export class Cadastro {
         }
       });
   }
+
+  loginGoogle() {
+
+  alert(
+    'Cadastro com Google será implementado em versão futura.'
+  );
+
+}
+
+loginApple() {
+
+  alert(
+    'Cadastro com Apple será implementado em versão futura.'
+  );
+
+}
 }

@@ -1,0 +1,27 @@
+<div class="container">
+
+  <div class="card">
+
+    <h2>Recuperar Senha</h2>
+
+    <p>
+      Informe seu e-mail para receber
+      as instruções de recuperação.
+    </p>
+
+    <input
+      type="email"
+      [(ngModel)]="email"
+      placeholder="Digite seu e-mail">
+
+    <button (click)="enviar()">
+      Enviar
+    </button>
+
+    <a routerLink="/login">
+      Voltar para Login
+    </a>
+
+  </div>
+
+</div>

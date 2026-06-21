@@ -8,9 +8,10 @@ import { Cadastro } from './pages/cadastro/cadastro';
 import { Home } from './pages/home/home';
 import { provideHttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { RecuperarSenha } from './pages/recuperar-senha/recuperar-senha';
 
 @NgModule({
-  declarations: [App, Login, Cadastro, Home],
+  declarations: [App, Login, Cadastro, Home, RecuperarSenha],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [provideBrowserGlobalErrorListeners(), provideHttpClient()],
   bootstrap: [App],

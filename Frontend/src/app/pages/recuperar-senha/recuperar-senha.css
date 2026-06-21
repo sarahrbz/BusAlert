@@ -1,0 +1,121 @@
+
+* {
+
+  box-sizing: border-box;
+}
+
+.container {
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+
+  background: linear-gradient(
+    135deg,
+    #8897ff,
+    #7585ff
+  );
+}
+
+.card {
+  width: 100%;
+  max-width: 400px;
+
+  background: white;
+
+  padding: 35px;
+
+  border-radius: 25px;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,.15);
+}
+
+.card h2 {
+  text-align: center;
+
+  color: #1e1e5a;
+
+  margin-bottom: 10px;
+
+  font-weight: 600;
+}
+
+.card p {
+  text-align: center;
+
+  color: #777;
+
+  margin-bottom: 25px;
+
+  line-height: 1.5;
+}
+
+.card input {
+  width: 100%;
+
+  height: 50px;
+
+  padding: 0 15px;
+
+  border: none;
+
+  border-radius: 14px;
+
+  background: #f3f3fa;
+
+  margin-bottom: 20px;
+
+  font-size: 14px;
+}
+
+.card input:focus {
+  outline: none;
+
+  border: 2px solid #7585ff;
+}
+
+.card button {
+  width: 100%;
+
+  height: 50px;
+
+  border: none;
+
+  border-radius: 14px;
+
+  background: linear-gradient(
+    90deg,
+    #8a97ff,
+    #7585ff
+  );
+
+  color: white;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: .3s;
+}
+
+.card button:hover {
+  transform: translateY(-2px);
+}
+
+.card a {
+  display: block;
+
+  text-align: center;
+
+  margin-top: 20px;
+
+  text-decoration: none;
+
+  color: #7585ff;
+
+  font-weight: 500;
+}

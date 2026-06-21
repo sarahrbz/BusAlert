@@ -43,4 +43,20 @@ export class Login {
     }
   });
   }
+
+  loginGoogle() {
+
+  alert(
+    'Login com Google será implementado em versão futura.'
+  );
+
+}
+
+loginApple() {
+
+  alert(
+    'Login com Apple será implementado em versão futura.'
+  );
+
+}
 }

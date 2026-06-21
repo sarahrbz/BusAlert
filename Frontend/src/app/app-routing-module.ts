@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { Login } from './pages/login/login';
 import { Cadastro } from './pages/cadastro/cadastro';
 import { Home } from './pages/home/home';
+import { RecuperarSenha } from './pages/recuperar-senha/recuperar-senha';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'home',
     component: Home
+  },
+  {
+    path: 'recuperar-senha',
+    component: RecuperarSenha
   }
 ];
 
