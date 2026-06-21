@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Auth } from '../../services/auth';
 import { UsuarioRequest } from '../../models/usuario-request';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro',
@@ -17,7 +18,7 @@ export class Cadastro {
 
 
 
-  constructor(private auth: Auth) {}
+  constructor(private auth: Auth, private router: Router) {}
 
   cadastrar() {
 
@@ -57,6 +58,10 @@ export class Cadastro {
           alert('Erro ao cadastrar usuário');
         }
       });
+
+      setTimeout(() => {
+    this.router.navigate(['/login']);
+  }, 2000);
   }
 
   loginGoogle() {

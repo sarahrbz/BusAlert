@@ -1,2 +1,41 @@
-<h1>Olá, {{ usuario?.nome }} 👋</h1>
-<p>Pronto(a) para acompanhar sua rota?</p>
+<div class="home-container">
+
+  <header>
+
+    <button>☰</button>
+
+    <h2>BusAlert</h2>
+
+    <button>🔔</button>
+
+  </header>
+
+  <section class="welcome">
+
+    <h1>
+      Olá, {{ usuario?.nome }} 👋
+    </h1>
+
+    <p>
+      Para onde vamos hoje?
+    </p>
+
+  </section>
+
+  <section class="search-card">
+
+    <input
+      type="text"
+      placeholder="De onde você está saindo?">
+
+    <input
+      type="text"
+      placeholder="Para onde você quer ir?">
+
+    <button>
+      Buscar rotas
+    </button>
+
+  </section>
+
+</div>
