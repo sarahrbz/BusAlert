@@ -137,3 +137,168 @@ header {
   font-weight: 500;
 }
 
+/* CARD DAS ROTAS */
+
+.rotas {
+  margin-top: 25px;
+}
+
+.rotas-header {
+  margin-bottom: 15px;
+}
+
+.rotas-header h2 {
+  color: #1e1e5a;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.rota-card {
+
+  background: white;
+
+  border-radius: 20px;
+
+  padding: 15px;
+
+  margin-bottom: 15px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+  transition: 0.3s;
+}
+
+.rota-card:hover {
+  transform: translateY(-2px);
+}
+
+.linha {
+
+  min-width: 70px;
+  height: 70px;
+
+  border-radius: 16px;
+
+  background: linear-gradient(
+    135deg,
+    #8a97ff,
+    #7585ff
+  );
+
+  color: white;
+
+  font-size: 1.5rem;
+  font-weight: 700;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.rota-info {
+  flex: 1;
+}
+
+.rota-info h3 {
+
+  color: #1e1e5a;
+
+  font-size: 1.1rem;
+
+  margin-bottom: 8px;
+}
+
+.rota-info p {
+
+  color: #777;
+
+  font-size: 0.9rem;
+}
+
+.tempo {
+
+  min-width: 85px;
+
+  background: #f3f4ff;
+
+  border-radius: 15px;
+
+  padding: 10px;
+
+  text-align: center;
+}
+
+.tempo span {
+
+  display: block;
+
+  color: #7585ff;
+
+  font-size: 1.2rem;
+
+  font-weight: 700;
+}
+
+.tempo small {
+
+  color: #777;
+
+  font-size: 0.75rem;
+}
+
+.location-card {
+
+  background: white;
+
+  border-radius: 20px;
+
+  padding: 20px;
+
+  margin-top: 20px;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,.05);
+}
+
+.location-card h3 {
+
+  color: #1e1e5a;
+
+  margin-bottom: 10px;
+}
+
+.location-card p {
+
+  color: #666;
+
+  margin-bottom: 15px;
+}
+
+.location-card button {
+
+  width: 100%;
+
+  height: 50px;
+
+  border: none;
+
+  border-radius: 15px;
+
+  background: linear-gradient(
+    90deg,
+    #8a97ff,
+    #7585ff
+  );
+
+  color: white;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}

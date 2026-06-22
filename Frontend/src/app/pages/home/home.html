@@ -1,5 +1,6 @@
 <div class="home-container">
 
+  <!-- Header -->
   <header>
 
     <button>☰</button>
@@ -10,6 +11,7 @@
 
   </header>
 
+  <!-- Saudação -->
   <section class="welcome">
 
     <h1>
@@ -22,6 +24,7 @@
 
   </section>
 
+  <!-- Busca de rotas -->
   <section class="search-card">
 
     <input
@@ -38,34 +41,127 @@
 
   </section>
 
+  <!-- Acessos rápidos -->
   <section class="quick-access">
 
-  <h2>Acessos rápidos</h2>
+    <h2>Acessos rápidos</h2>
 
-  <div class="quick-grid">
+    <div class="quick-grid">
 
-    <div class="quick-card">
-      <div class="icon">📍</div>
-      <span>Pontos<br>próximos</span>
+      <div class="quick-card">
+
+        <div class="icon">📍</div>
+
+        <span>
+          Pontos<br>
+          próximos
+        </span>
+
+      </div>
+
+      <div class="quick-card">
+
+        <div class="icon">⭐</div>
+
+        <span>
+          Rotas<br>
+          favoritas
+        </span>
+
+      </div>
+
+      <div class="quick-card">
+
+        <div class="icon">🔔</div>
+
+        <span>
+          Notificações
+        </span>
+
+      </div>
+
+      <div class="quick-card">
+
+        <div class="icon">🎫</div>
+
+        <span>
+          Minhas<br>
+          viagens
+        </span>
+
+      </div>
+
     </div>
 
-    <div class="quick-card">
-      <div class="icon">⭐</div>
-      <span>Rotas<br>favoritas</span>
+  </section>
+
+  <!-- Localização -->
+  <section
+  class="location-card"
+  *ngIf="!localizacaoAtiva">
+
+  <h3>Ativar localização</h3>
+
+  <p>
+    Permita o acesso à sua localização para
+    receber rotas mais precisas.
+  </p>
+
+  <button (click)="ativarLocalizacao()">
+    Ativar agora
+  </button>
+
+  </section>
+
+  <!-- Rotas sugeridas -->
+  <section
+    class="rotas"
+    *ngIf="localizacaoAtiva">
+
+    <div class="rotas-header">
+
+      <h2>
+        Rotas sugeridas para você
+      </h2>
+
     </div>
 
-    <div class="quick-card">
-      <div class="icon">🔔</div>
-      <span>Notificações</span>
-    </div>
+    <div
+  class="rota-card"
+  *ngFor="let rota of rotas">
 
-    <div class="quick-card">
-      <div class="icon">🎫</div>
-      <span>Minhas<br>viagens</span>
-    </div>
+  <div class="linha">
+    {{ rota.linha }}
+  </div>
+
+  <div class="rota-info">
+
+    <h3>
+      {{ rota.origem }}
+      →
+      {{ rota.destino }}
+    </h3>
+
+    <p>
+      Saída às {{ rota.horario }}
+    </p>
 
   </div>
 
-</section>
+  <div class="tempo">
+
+    <span>
+      {{ rota.tempo }}
+    </span>
+
+    <small>
+      estimado
+    </small>
+
+  </div>
+
+</div>
+
+  </section>
 
 </div>
