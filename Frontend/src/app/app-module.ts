@@ -9,9 +9,10 @@ import { Home } from './pages/home/home';
 import { provideHttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RecuperarSenha } from './pages/recuperar-senha/recuperar-senha';
+import { Perfil } from './pages/perfil/perfil';
 
 @NgModule({
-  declarations: [App, Login, Cadastro, Home, RecuperarSenha],
+  declarations: [App, Login, Cadastro, Home, RecuperarSenha, Perfil],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [provideBrowserGlobalErrorListeners(), provideHttpClient()],
   bootstrap: [App],

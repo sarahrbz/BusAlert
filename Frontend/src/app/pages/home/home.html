@@ -3,11 +3,16 @@
   <!-- Header -->
   <header>
 
-    <button>☰</button>
+    <button>
+        <i class="fas fa-bars"></i>
+    </button>
 
     <h2>BusAlert</h2>
 
-    <button>🔔</button>
+    <button>
+        <i class="fas fa-bell"></i>
+
+    </button>
 
   </header>
 
@@ -27,15 +32,24 @@
   <!-- Busca de rotas -->
   <section class="search-card">
 
-    <input
+    <div class="search-input">
+      <i class="fas fa-location-dot"></i>
+        <input
       type="text"
       placeholder="De onde você está saindo?">
+    </div>
 
-    <input
+
+    <div class="search-input">
+      <i class="fas fa-flag-checkered"></i>
+      <input
       type="text"
       placeholder="Para onde você quer ir?">
+    </div>
+
 
     <button>
+        <i class="fas fa-route"></i>
       Buscar rotas
     </button>
 
@@ -50,7 +64,9 @@
 
       <div class="quick-card">
 
-        <div class="icon">📍</div>
+        <div class="icon">
+            <i class="fas fa-location-dot"></i>
+        </div>
 
         <span>
           Pontos<br>
@@ -61,7 +77,9 @@
 
       <div class="quick-card">
 
-        <div class="icon">⭐</div>
+        <div class="icon">
+            <i class="fas fa-star"></i>
+        </div>
 
         <span>
           Rotas<br>
@@ -72,7 +90,7 @@
 
       <div class="quick-card">
 
-        <div class="icon">🔔</div>
+        <div class="icon"><i class="fas fa-bell"></i></div>
 
         <span>
           Notificações
@@ -82,7 +100,9 @@
 
       <div class="quick-card">
 
-        <div class="icon">🎫</div>
+        <div class="icon">
+            <i class="fas fa-ticket"></i>
+        </div>
 
         <span>
           Minhas<br>
@@ -143,6 +163,7 @@
     </h3>
 
     <p>
+        <i class="fas fa-clock"></i>
       Saída às {{ rota.horario }}
     </p>
 
@@ -163,5 +184,37 @@
 </div>
 
   </section>
+  <nav class="bottom-nav">
 
+  <div class="nav-item active">
+    <span><i class="fas fa-house"></i></span>
+    <p>Início</p>
+  </div>
+
+  <div class="nav-item">
+    <span><i class="fas fa-map-location-dot"></i></span>
+    <p>Mapa</p>
+  </div>
+
+  <div class="nav-item center">
+    <span>
+        <i class="fas fa-bus"></i>
+    </span>
+    <p>Viagem</p>
+  </div>
+
+  <div class="nav-item">
+    <span><i class="fas fa-star"></i></span>
+    <p>Favoritos</p>
+  </div>
+
+  <div class="nav-item"
+    routerLink="/perfil">
+    <span>
+        <i class="fas fa-user"></i>
+    </span>
+    <p>Perfil</p>
+  </div>
+
+</nav>
 </div>

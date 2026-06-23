@@ -4,6 +4,7 @@ import { Login } from './pages/login/login';
 import { Cadastro } from './pages/cadastro/cadastro';
 import { Home } from './pages/home/home';
 import { RecuperarSenha } from './pages/recuperar-senha/recuperar-senha';
+import { Perfil } from './pages/perfil/perfil';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'recuperar-senha',
     component: RecuperarSenha
+  },
+  {
+    path: 'perfil',
+    component: Perfil
   }
 ];
 

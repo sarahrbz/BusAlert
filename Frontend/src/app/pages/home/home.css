@@ -1,4 +1,6 @@
 .home-container {
+  padding-bottom: 110px;
+
 background: linear-gradient(
   90deg,
   #8d95ff,
@@ -301,4 +303,84 @@ header {
   font-weight: 600;
 
   cursor: pointer;
+}
+
+.bottom-nav {
+
+  position: fixed;
+
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+
+  height: 80px;
+
+  background: white;
+
+  display: flex;
+
+  justify-content: space-around;
+  align-items: center;
+
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+
+  box-shadow: 0 -3px 10px rgba(0,0,0,.08);
+
+  z-index: 100;
+}
+
+.nav-item {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  color: #888;
+
+  font-size: 12px;
+
+  cursor: pointer;
+}
+
+.nav-item span {
+  font-size: 22px;
+}
+
+.nav-item.active {
+  color: #7585ff;
+}
+
+.center {
+
+  width: 70px;
+  height: 70px;
+
+  border-radius: 50%;
+
+  background: linear-gradient(
+    135deg,
+    #8a97ff,
+    #7585ff
+  );
+
+  color: white;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  margin-top: -35px;
+
+  box-shadow: 0 5px 15px rgba(117,133,255,.4);
+}
+
+.center span {
+  font-size: 24px;
+}
+
+.center p {
+  font-size: 12px;
 }
