@@ -11,9 +11,10 @@ import { FormsModule } from '@angular/forms';
 import { RecuperarSenha } from './pages/recuperar-senha/recuperar-senha';
 import { Perfil } from './pages/perfil/perfil';
 import { Navbar } from './components/navbar/navbar';
+import { RotasFavoritas } from './pages/rotas-favoritas/rotas-favoritas';
 
 @NgModule({
-  declarations: [App, Login, Cadastro, Home, RecuperarSenha, Perfil, Navbar],
+  declarations: [App, Login, Cadastro, Home, RecuperarSenha, Perfil, Navbar, RotasFavoritas],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [provideBrowserGlobalErrorListeners(), provideHttpClient()],
   bootstrap: [App],

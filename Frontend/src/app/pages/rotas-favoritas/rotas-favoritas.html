@@ -1,0 +1,118 @@
+<div class="favoritos-container">
+
+  <header class="favoritos-header">
+
+    <button class="back-btn">
+      <i class="fas fa-arrow-left"></i>
+    </button>
+
+    <div>
+      <h1>Minhas rotas favoritas</h1>
+      <p>Acesse rapidamente suas rotas preferidas</p>
+    </div>
+
+    <button class="add-btn">
+      <i class="fas fa-plus"></i>
+    </button>
+
+  </header>
+
+  <section class="favorite-banner">
+
+    <div class="banner-icon">
+      <i class="fas fa-star"></i>
+    </div>
+
+    <div>
+
+      <h3>Suas rotas, do seu jeito</h3>
+
+      <p>
+        Salve as rotas que você mais usa
+        e acesse com um toque.
+      </p>
+
+    </div>
+
+  </section>
+
+  <section class="favoritos-lista">
+
+    <div class="section-title">
+
+      <h2>Suas rotas salvas</h2>
+
+      <a>Editar</a>
+
+    </div>
+
+    <div
+      class="rota-card"
+      *ngFor="let rota of favoritos">
+
+      <div class="linha">
+
+        {{ rota.linha }}
+
+      </div>
+
+      <div class="rota-info">
+
+        <h3>
+          {{ rota.origem }}
+          →
+          {{ rota.destino }}
+        </h3>
+
+        <p>
+          📍 {{ rota.local }}
+        </p>
+
+        <p>
+          🕒 {{ rota.horario }}
+        </p>
+
+        <span class="tag">
+
+          {{ rota.categoria }}
+
+        </span>
+
+      </div>
+
+      <div class="tempo">
+
+        <strong>
+          {{ rota.tempo }}
+        </strong>
+
+        <small>
+          estimado
+        </small>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="tip-card">
+
+    <div>
+
+      <h3>Dica BusAlert</h3>
+
+      <p>
+        Ative alarmes para receber avisos
+        antes da chegada do ônibus.
+      </p>
+
+    </div>
+
+    <button>
+      Ativar alarmes
+    </button>
+
+  </section>
+
+</div>

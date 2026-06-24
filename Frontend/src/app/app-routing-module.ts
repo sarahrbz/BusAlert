@@ -5,6 +5,7 @@ import { Cadastro } from './pages/cadastro/cadastro';
 import { Home } from './pages/home/home';
 import { RecuperarSenha } from './pages/recuperar-senha/recuperar-senha';
 import { Perfil } from './pages/perfil/perfil';
+import { RotasFavoritas } from './pages/rotas-favoritas/rotas-favoritas';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: 'perfil',
     component: Perfil
+  },
+  {
+    path: 'rotas-favoritas',
+    component: RotasFavoritas
   }
 ];
 
