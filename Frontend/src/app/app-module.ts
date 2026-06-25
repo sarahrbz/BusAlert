@@ -14,6 +14,7 @@ import { Navbar } from './components/navbar/navbar';
 import { RotasFavoritas } from './pages/rotas-favoritas/rotas-favoritas';
 import { RotaMonitoramento } from './pages/rota-monitoramento/rota-monitoramento';
 import { SelecaoRota } from './pages/selecao-rota/selecao-rota';
+import { Mapa } from './pages/mapa/mapa';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { SelecaoRota } from './pages/selecao-rota/selecao-rota';
     RotasFavoritas,
     RotaMonitoramento,
     SelecaoRota,
+    Mapa,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [provideBrowserGlobalErrorListeners(), provideHttpClient()],

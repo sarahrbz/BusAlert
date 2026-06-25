@@ -345,6 +345,7 @@ export class RotaMonitoramento implements OnInit {
 
       this.alertaAtual =
         'Sua parada está a aproximadamente 3 km.';
+        this.mostrarAlerta = true;
 
       this.mostrarNotificacao(
         'BusAlert',
@@ -361,7 +362,7 @@ export class RotaMonitoramento implements OnInit {
 
       this.alertaAtual =
         'Sua parada está muito próxima. Prepare-se para descer!';
-
+          this.mostrarAlerta = true;
       this.mostrarNotificacao(
         'BusAlert',
         this.alertaAtual

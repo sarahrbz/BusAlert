@@ -1,67 +1,157 @@
 <div class="monitoramento-container">
 
-  <h1>Monitoramento da rota</h1>
-
-  <div id="map"></div>
-
-  <h2>
-    Linha {{ rotaSelecionada?.linha }}
-  </h2>
-
-  <p>
-    {{ rotaSelecionada?.origem }}
-    →
-    {{ rotaSelecionada?.destino }}
-  </p>
-
-  <h3>
-    {{ distanciaRestante | number:'1.1-1' }} km
-  </h3>
-
-  <p>
-    Status: {{ statusViagem }}
-  </p>
-
-  <p>
-    Próximo alerta: {{ proximoAlerta }}
-  </p>
-
-  <div class="progress-bar">
-
-    <div class="progress-fill" [style.width.%]="progressoViagem">
+  <header class="monitoramento-header">
+    <div>
+      <h1>Monitoramento</h1>
+      <p>Acompanhe sua viagem em tempo real</p>
     </div>
 
-  </div>
-
-  <p *ngIf="!simulacaoAtiva && !viagemFinalizada">
-    Aguardando início da viagem
-  </p>
-
-  <p *ngIf="simulacaoAtiva">
-    Viagem em andamento
-  </p>
-
-  <p *ngIf="viagemFinalizada">
-    Viagem finalizada
-  </p>
-
-  <div class="alerta-card" *ngIf="mostrarAlerta">
-
-    🔔 {{ alertaAtual }}
-
-    <button class="btn-alerta" (click)="fecharAlerta()">
-
-      Entendi, obrigado!
-
+    <button routerLink="/selecao-rota">
+      <i class="fas fa-xmark"></i>
     </button>
+  </header>
 
-  </div>
+  <section class="map-section">
+    <div id="map"></div>
 
+    <div class="toast-alert" *ngIf="mostrarAlerta">
+      <div class="toast-icon">
+        <i class="fas fa-bell"></i>
+      </div>
 
+      <div>
+        <strong>BusAlert</strong>
+        <p>{{ alertaAtual }}</p>
+      </div>
 
-  <button *ngIf="!simulacaoAtiva && !viagemFinalizada" (click)="iniciarSimulacao()">
+      <button (click)="fecharAlerta()">
+        <i class="fas fa-xmark"></i>
+      </button>
+    </div>
+  </section>
 
+  <section class="trip-card">
+
+    <div class="trip-header">
+
+      <div class="linha-box">
+        {{ rotaSelecionada?.linha }}
+      </div>
+
+      <div class="trip-title">
+        <h2>
+          {{ rotaSelecionada?.origem }}
+          →
+          {{ rotaSelecionada?.destino }}
+        </h2>
+
+        <p>
+          Previsão de chegada: {{ rotaSelecionada?.horario }}
+        </p>
+      </div>
+
+      <span
+        class="status-badge"
+        [class.aguardando]="!simulacaoAtiva && !viagemFinalizada"
+        [class.finalizado]="viagemFinalizada">
+
+        {{
+          viagemFinalizada
+            ? 'Finalizada'
+            : simulacaoAtiva
+              ? 'Em andamento'
+              : 'Aguardando'
+        }}
+
+      </span>
+
+    </div>
+
+    <div
+      class="waiting-card"
+      *ngIf="!simulacaoAtiva && !viagemFinalizada">
+
+      <i class="fas fa-bus"></i>
+
+      <h3>Pronto para iniciar sua viagem</h3>
+
+      <p>
+        Clique em iniciar viagem para acompanhar sua rota em tempo real.
+      </p>
+
+    </div>
+
+    <div
+      class="distance-card"
+      *ngIf="simulacaoAtiva || viagemFinalizada">
+
+      <span>Distância restante</span>
+
+      <strong>
+        {{ distanciaRestante | number:'1.1-1' }} km
+      </strong>
+
+      <small>
+        Próximo alerta: {{ proximoAlerta }}
+      </small>
+
+    </div>
+
+    <div
+      class="progress-bar"
+      *ngIf="simulacaoAtiva || viagemFinalizada">
+
+      <div
+        class="progress-fill"
+        [style.width.%]="progressoViagem">
+      </div>
+
+    </div>
+
+    <p
+      class="status-text"
+      *ngIf="simulacaoAtiva || viagemFinalizada">
+
+      {{ statusViagem }}
+
+    </p>
+
+  </section>
+
+  <section class="tip-card">
+
+    <div class="tip-icon">
+      <i class="fas fa-bullhorn"></i>
+    </div>
+
+    <div>
+      <h3>Dica BusAlert</h3>
+      <p>
+        {{
+          simulacaoAtiva || viagemFinalizada
+            ? (alertaAtual || 'Acompanhe sua viagem e aguarde os alertas de proximidade.')
+            : 'Inicie a viagem para começar o monitoramento da sua rota.'
+        }}
+      </p>
+    </div>
+
+  </section>
+
+  <button
+    class="start-btn"
+    *ngIf="!simulacaoAtiva && !viagemFinalizada"
+    (click)="iniciarSimulacao()">
+
+    <i class="fas fa-location-arrow"></i>
     Iniciar viagem
+
+  </button>
+
+  <button
+    class="outline-btn"
+    routerLink="/selecao-rota">
+
+    Ver trajetos
 
   </button>
 

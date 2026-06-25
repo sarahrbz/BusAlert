@@ -1,0 +1,80 @@
+<div class="mapa-container">
+
+  <header class="mapa-header">
+    <button routerLink="/home">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+
+    <div>
+      <h1>Mapa de rotas</h1>
+      <p>Acompanhe as rotas em tempo real</p>
+    </div>
+
+    <button>
+      <i class="fas fa-bell"></i>
+    </button>
+  </header>
+
+  <section class="search-box">
+    <i class="fas fa-search"></i>
+    <input
+      type="text"
+      placeholder="Buscar ponto, linha ou local..."
+      disabled>
+  </section>
+
+  <section class="filters">
+    <button
+  [class.active]="filtroAtivo === 'linhas'"
+  (click)="selecionarFiltro('linhas')">
+  <i class="fas fa-bus"></i>
+  Linhas
+</button>
+
+<button
+  [class.active]="filtroAtivo === 'pontos'"
+  (click)="selecionarFiltro('pontos')">
+  <i class="fas fa-location-dot"></i>
+  Pontos
+</button>
+
+<button
+  [class.active]="filtroAtivo === 'transito'"
+  (click)="selecionarFiltro('transito')">
+  <i class="fas fa-traffic-light"></i>
+  Trânsito
+</button>
+  </section>
+
+  <div id="mapa-geral"></div>
+
+  <section class="linhas-card">
+
+    <div class="linhas-header">
+      <h2>Linhas próximas</h2>
+      <a routerLink="/selecao-rota">Ver todas</a>
+    </div>
+
+    <div
+      class="linha-item"
+      *ngFor="let rota of rotas">
+
+      <div class="linha-numero">
+        {{ rota.linha }}
+      </div>
+
+      <div class="linha-info">
+        <h3>{{ rota.origem }} → {{ rota.destino }}</h3>
+        <p>Ônibus em movimento</p>
+        <small>Trajeto calculado em tempo real</small>
+      </div>
+
+      <strong>{{ rota.tempo }}</strong>
+
+    </div>
+
+  </section>
+
+  <app-navbar></app-navbar>
+
+</div>

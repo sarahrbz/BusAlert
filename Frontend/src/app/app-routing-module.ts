@@ -8,6 +8,7 @@ import { RecuperarSenha } from './pages/recuperar-senha/recuperar-senha';
 import { Perfil } from './pages/perfil/perfil';
 import { RotasFavoritas } from './pages/rotas-favoritas/rotas-favoritas';
 import { SelecaoRota } from './pages/selecao-rota/selecao-rota';
+import { Mapa } from './pages/mapa/mapa';
 
 const routes: Routes = [
   {
@@ -46,6 +47,10 @@ const routes: Routes = [
   {
     path: 'selecao-rota',
     component: SelecaoRota
+  },
+  {
+    path: 'mapa',
+    component: Mapa
   }
 ];
 
