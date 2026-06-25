@@ -19,21 +19,19 @@
   </h3>
 
   <p>
-  Status: {{ statusViagem }}
-</p>
+    Status: {{ statusViagem }}
+  </p>
 
-<p>
-  Próximo alerta: {{ proximoAlerta }}
-</p>
+  <p>
+    Próximo alerta: {{ proximoAlerta }}
+  </p>
 
-<div class="progress-bar">
+  <div class="progress-bar">
 
-  <div
-    class="progress-fill"
-    [style.width.%]="progressoViagem">
+    <div class="progress-fill" [style.width.%]="progressoViagem">
+    </div>
+
   </div>
-
-</div>
 
   <p *ngIf="!simulacaoAtiva && !viagemFinalizada">
     Aguardando início da viagem
@@ -47,17 +45,21 @@
     Viagem finalizada
   </p>
 
-  <div
-    class="alerta-card"
-    *ngIf="alertaAtual">
+  <div class="alerta-card" *ngIf="mostrarAlerta">
 
     🔔 {{ alertaAtual }}
 
+    <button class="btn-alerta" (click)="fecharAlerta()">
+
+      Entendi, obrigado!
+
+    </button>
+
   </div>
 
-  <button
-    *ngIf="!simulacaoAtiva && !viagemFinalizada"
-    (click)="iniciarSimulacao()">
+
+
+  <button *ngIf="!simulacaoAtiva && !viagemFinalizada" (click)="iniciarSimulacao()">
 
     Iniciar viagem
 

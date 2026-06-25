@@ -4,13 +4,13 @@
   <header>
 
     <button>
-        <i class="fas fa-bars"></i>
+      <i class="fas fa-bars"></i>
     </button>
 
     <h2>BusAlert</h2>
 
     <button>
-        <i class="fas fa-bell"></i>
+      <i class="fas fa-bell"></i>
 
     </button>
 
@@ -34,22 +34,18 @@
 
     <div class="search-input">
       <i class="fas fa-location-dot"></i>
-        <input
-      type="text"
-      placeholder="De onde você está saindo?">
+      <input type="text" placeholder="De onde você está saindo?" value="FATEC Itu" disabled>
     </div>
 
 
     <div class="search-input">
       <i class="fas fa-flag-checkered"></i>
-      <input
-      type="text"
-      placeholder="Para onde você quer ir?">
+      <input type="text" placeholder="Para onde você quer ir?" value="Escolher destino" disabled>
     </div>
 
 
-    <button>
-        <i class="fas fa-route"></i>
+    <button routerLink="/selecao-rota">
+      <i class="fas fa-route"></i>
       Buscar rotas
     </button>
 
@@ -65,7 +61,7 @@
       <div class="quick-card">
 
         <div class="icon">
-            <i class="fas fa-location-dot"></i>
+          <i class="fas fa-location-dot"></i>
         </div>
 
         <span>
@@ -78,7 +74,7 @@
       <div class="quick-card">
 
         <div class="icon">
-            <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
         </div>
 
         <span>
@@ -101,7 +97,7 @@
       <div class="quick-card">
 
         <div class="icon">
-            <i class="fas fa-ticket"></i>
+          <i class="fas fa-ticket"></i>
         </div>
 
         <span>
@@ -116,27 +112,23 @@
   </section>
 
   <!-- Localização -->
-  <section
-  class="location-card"
-  *ngIf="!localizacaoAtiva">
+  <section class="location-card" *ngIf="!localizacaoAtiva">
 
-  <h3>Ativar localização</h3>
+    <h3>Ativar localização</h3>
 
-  <p>
-    Permita o acesso à sua localização para
-    receber rotas mais precisas.
-  </p>
+    <p>
+      Permita o acesso à sua localização para
+      receber rotas mais precisas.
+    </p>
 
-  <button (click)="ativarLocalizacao()">
-    Ativar agora
-  </button>
+    <button (click)="ativarLocalizacao()">
+      Ativar agora
+    </button>
 
   </section>
 
   <!-- Rotas sugeridas -->
-  <section
-    class="rotas"
-    *ngIf="localizacaoAtiva">
+  <section class="rotas" *ngIf="localizacaoAtiva">
 
     <div class="rotas-header">
 
@@ -146,44 +138,41 @@
 
     </div>
 
-    <div
-  class="rota-card"
-  *ngFor="let rota of rotas"
-  (click)="selecionarRota(rota)">
+    <div class="rota-card" *ngFor="let rota of rotas" (click)="selecionarRota(rota)">
 
-  <div class="linha">
-    {{ rota.linha }}
-  </div>
+      <div class="linha">
+        {{ rota.linha }}
+      </div>
 
-  <div class="rota-info">
+      <div class="rota-info">
 
-    <h3>
-      {{ rota.origem }}
-      →
-      {{ rota.destino }}
-    </h3>
+        <h3>
+          {{ rota.origem }}
+          →
+          {{ rota.destino }}
+        </h3>
 
-    <p>
-        <i class="fas fa-clock"></i>
-      Saída às {{ rota.horario }}
-    </p>
+        <p>
+          <i class="fas fa-clock"></i>
+          Saída às {{ rota.horario }}
+        </p>
 
-  </div>
+      </div>
 
-  <div class="tempo">
+      <div class="tempo">
 
-    <span>
-      {{ rota.tempo }}
-    </span>
+        <span>
+          {{ rota.tempo }}
+        </span>
 
-    <small>
-      estimado
-    </small>
+        <small>
+          estimado
+        </small>
 
-  </div>
+      </div>
 
-</div>
+    </div>
 
   </section>
   <app-navbar></app-navbar>
-  </div>
+</div>

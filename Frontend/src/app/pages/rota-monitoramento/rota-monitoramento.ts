@@ -36,6 +36,7 @@ export class RotaMonitoramento implements OnInit {
   statusViagem = 'Aguardando início da viagem';
   proximoAlerta = '5 km';
   alertaAtual = '';
+  mostrarAlerta = false;
 
   alerta5kmEmitido = false;
   alerta3kmEmitido = false;
@@ -49,16 +50,16 @@ export class RotaMonitoramento implements OnInit {
   });
 
   destinationIcon = L.divIcon({
-  html: '<i class="fas fa-location-dot"></i>',
-  className: 'destination-map-icon',
-  iconSize: [36, 36],
-  iconAnchor: [18, 18]
-});
+    html: '<i class="fas fa-location-dot"></i>',
+    className: 'destination-map-icon',
+    iconSize: [36, 36],
+    iconAnchor: [18, 18]
+  });
 
   constructor(
     private cdr: ChangeDetectorRef,
     private http: HttpClient
-  ) {}
+  ) { }
 
   ngOnInit(): void {
 
@@ -80,42 +81,42 @@ export class RotaMonitoramento implements OnInit {
   }
   buscarPercursoReal() {
 
-  const url =
-    `https://router.project-osrm.org/route/v1/driving/` +
-    `${this.rotaSelecionada.origemLng},${this.rotaSelecionada.origemLat};` +
-    `${this.rotaSelecionada.destinoLng},${this.rotaSelecionada.destinoLat}` +
-    `?overview=full&geometries=geojson`;
+    const url =
+      `https://router.project-osrm.org/route/v1/driving/` +
+      `${this.rotaSelecionada.origemLng},${this.rotaSelecionada.origemLat};` +
+      `${this.rotaSelecionada.destinoLng},${this.rotaSelecionada.destinoLat}` +
+      `?overview=full&geometries=geojson`;
 
     console.log(url);
-  this.http.get<any>(url).subscribe({
+    this.http.get<any>(url).subscribe({
 
-    next: (res) => {
-      console.log(res);
-      console.log(res.routes[0]);
-      console.log(res.routes[0].geometry.coordinates.length);
-      const coordenadas =
-        res.routes[0].geometry.coordinates;
+      next: (res) => {
+        console.log(res);
+        console.log(res.routes[0]);
+        console.log(res.routes[0].geometry.coordinates.length);
+        const coordenadas =
+          res.routes[0].geometry.coordinates;
 
-      this.rotaSelecionada.percurso =
-        coordenadas.map((coord: any) => {
-          return {
-            lat: coord[1],
-            lng: coord[0]
-          };
-        });
+        this.rotaSelecionada.percurso =
+          coordenadas.map((coord: any) => {
+            return {
+              lat: coord[1],
+              lng: coord[0]
+            };
+          });
 
-      this.prepararRota();
+        this.prepararRota();
 
-      setTimeout(() => {
-        this.inicializarMapa();
-      }, 100);
-    },
+        setTimeout(() => {
+          this.inicializarMapa();
+        }, 100);
+      },
 
-    error: () => {
-      alert('Não foi possível carregar o trajeto real.');
-    }
-  });
-}
+      error: () => {
+        alert('Não foi possível carregar o trajeto real.');
+      }
+    });
+  }
 
   prepararRota() {
 
@@ -123,7 +124,7 @@ export class RotaMonitoramento implements OnInit {
 
     this.destino =
       this.rotaSelecionada.percurso[
-        this.rotaSelecionada.percurso.length - 1
+      this.rotaSelecionada.percurso.length - 1
       ];
 
     const inicio =
@@ -183,12 +184,12 @@ export class RotaMonitoramento implements OnInit {
       ).addTo(this.map);
 
     this.destinationMarker =
-  L.marker(
-    [this.destino.lat, this.destino.lng],
-    {
-      icon: this.destinationIcon
-    }
-  ).addTo(this.map);
+      L.marker(
+        [this.destino.lat, this.destino.lng],
+        {
+          icon: this.destinationIcon
+        }
+      ).addTo(this.map);
 
     this.map.fitBounds(
       this.rotaPolyline.getBounds(),
@@ -226,7 +227,7 @@ export class RotaMonitoramento implements OnInit {
 
         const pontoAtual =
           this.rotaSelecionada.percurso[
-            this.indiceAtual
+          this.indiceAtual
           ];
 
         this.atualizarPosicaoOnibus(
@@ -327,6 +328,7 @@ export class RotaMonitoramento implements OnInit {
 
       this.alertaAtual =
         'Sua parada está a aproximadamente 5 km.';
+      this.mostrarAlerta = true;
 
       this.mostrarNotificacao(
         'BusAlert',
@@ -365,6 +367,12 @@ export class RotaMonitoramento implements OnInit {
         this.alertaAtual
       );
     }
+  }
+
+  fecharAlerta() {
+
+    this.mostrarAlerta = false;
+
   }
 
   finalizarViagem() {
@@ -451,29 +459,29 @@ export class RotaMonitoramento implements OnInit {
 
   calcularDistanciaRestantePercurso(): number {
 
-   let distancia = 0;
+    let distancia = 0;
 
-  for (
-    let i = this.indiceAtual;
-    i < this.rotaSelecionada.percurso.length - 1;
-    i++
-  ) {
+    for (
+      let i = this.indiceAtual;
+      i < this.rotaSelecionada.percurso.length - 1;
+      i++
+    ) {
 
-    const atual =
-      this.rotaSelecionada.percurso[i];
+      const atual =
+        this.rotaSelecionada.percurso[i];
 
-    const proximo =
-      this.rotaSelecionada.percurso[i + 1];
+      const proximo =
+        this.rotaSelecionada.percurso[i + 1];
 
-    distancia += this.calcularDistancia(
-      atual.lat,
-      atual.lng,
-      proximo.lat,
-      proximo.lng
-    );
+      distancia += this.calcularDistancia(
+        atual.lat,
+        atual.lng,
+        proximo.lat,
+        proximo.lng
+      );
+    }
+
+    return distancia;
   }
-
-  return distancia;
-}
 
 }
