@@ -1,0 +1,156 @@
+.rota-card {
+  cursor: pointer;
+}
+
+.rota-card.selected {
+  border: 2px solid #7585ff;
+  background: #f4f5ff;
+}
+.selecao-container {
+  min-height: 100vh;
+  padding: 28px 24px 120px;
+  background: #f7f7ff;
+  color: #111;
+}
+
+.selecao-container h1 {
+  color: #10105f;
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.selecao-container > p {
+  color: #85859c;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 26px;
+}
+
+.origem-destino-card {
+  background: white;
+  border-radius: 24px;
+  padding: 22px;
+  margin-bottom: 26px;
+  box-shadow: 0 8px 25px rgba(90, 90, 160, 0.08);
+}
+
+.origem-destino-card div {
+  background: #f5f5ff;
+  border-radius: 16px;
+  padding: 14px 18px;
+  margin-bottom: 14px;
+}
+
+.origem-destino-card div:last-child {
+  margin-bottom: 0;
+}
+
+.origem-destino-card small {
+  color: #9090a8;
+  font-weight: 700;
+}
+
+.origem-destino-card h3 {
+  color: #151568;
+  font-size: 20px;
+  margin-top: 4px;
+}
+
+.selecao-container h2 {
+  color: #10105f;
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+.rota-card {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  background: white;
+  border-radius: 22px;
+  padding: 18px;
+  margin-bottom: 16px;
+
+  border: 2px solid transparent;
+  box-shadow: 0 8px 24px rgba(90, 90, 160, 0.08);
+
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.rota-card:hover,
+.rota-card.selected {
+  border-color: #6f7dff;
+  background: #f4f5ff;
+  transform: translateY(-2px);
+}
+
+.linha {
+  width: 68px;
+  height: 68px;
+  min-width: 68px;
+
+  border-radius: 16px;
+  background: linear-gradient(135deg, #5f73ff, #7d8cff);
+
+  color: white;
+  font-size: 28px;
+  font-weight: 800;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rota-info h3 {
+  color: #10105f;
+  font-size: 17px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.rota-info p {
+  color: #777891;
+  font-size: 13px;
+  margin: 5px 0;
+  font-weight: 600;
+}
+
+.rota-info i {
+  color: #7b6dff;
+  margin-right: 6px;
+}
+
+.status-rota {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 6px 10px;
+
+  background: #eef0ff;
+  color: #6976ff;
+
+  border-radius: 14px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.start-btn {
+  width: 100%;
+  margin-top: 24px;
+  padding: 17px;
+
+  border: none;
+  border-radius: 18px;
+
+  background: linear-gradient(135deg, #5f73ff, #4c62f0);
+  color: white;
+
+  font-size: 15px;
+  font-weight: 800;
+
+  box-shadow: 0 10px 24px rgba(95, 115, 255, 0.35);
+  cursor: pointer;
+}

@@ -1,0 +1,66 @@
+<div class="monitoramento-container">
+
+  <h1>Monitoramento da rota</h1>
+
+  <div id="map"></div>
+
+  <h2>
+    Linha {{ rotaSelecionada?.linha }}
+  </h2>
+
+  <p>
+    {{ rotaSelecionada?.origem }}
+    →
+    {{ rotaSelecionada?.destino }}
+  </p>
+
+  <h3>
+    {{ distanciaRestante | number:'1.1-1' }} km
+  </h3>
+
+  <p>
+  Status: {{ statusViagem }}
+</p>
+
+<p>
+  Próximo alerta: {{ proximoAlerta }}
+</p>
+
+<div class="progress-bar">
+
+  <div
+    class="progress-fill"
+    [style.width.%]="progressoViagem">
+  </div>
+
+</div>
+
+  <p *ngIf="!simulacaoAtiva && !viagemFinalizada">
+    Aguardando início da viagem
+  </p>
+
+  <p *ngIf="simulacaoAtiva">
+    Viagem em andamento
+  </p>
+
+  <p *ngIf="viagemFinalizada">
+    Viagem finalizada
+  </p>
+
+  <div
+    class="alerta-card"
+    *ngIf="alertaAtual">
+
+    🔔 {{ alertaAtual }}
+
+  </div>
+
+  <button
+    *ngIf="!simulacaoAtiva && !viagemFinalizada"
+    (click)="iniciarSimulacao()">
+
+    Iniciar viagem
+
+  </button>
+
+</div>

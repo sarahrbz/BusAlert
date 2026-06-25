@@ -148,7 +148,8 @@
 
     <div
   class="rota-card"
-  *ngFor="let rota of rotas">
+  *ngFor="let rota of rotas"
+  (click)="selecionarRota(rota)">
 
   <div class="linha">
     {{ rota.linha }}

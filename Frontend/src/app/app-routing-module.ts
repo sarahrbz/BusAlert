@@ -1,3 +1,4 @@
+import { RotaMonitoramento } from './pages/rota-monitoramento/rota-monitoramento';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Login } from './pages/login/login';
@@ -6,6 +7,7 @@ import { Home } from './pages/home/home';
 import { RecuperarSenha } from './pages/recuperar-senha/recuperar-senha';
 import { Perfil } from './pages/perfil/perfil';
 import { RotasFavoritas } from './pages/rotas-favoritas/rotas-favoritas';
+import { SelecaoRota } from './pages/selecao-rota/selecao-rota';
 
 const routes: Routes = [
   {
@@ -36,6 +38,14 @@ const routes: Routes = [
   {
     path: 'rotas-favoritas',
     component: RotasFavoritas
+  },
+  {
+    path: 'rota-monitoramento',
+    component: RotaMonitoramento
+  },
+  {
+    path: 'selecao-rota',
+    component: SelecaoRota
   }
 ];
 

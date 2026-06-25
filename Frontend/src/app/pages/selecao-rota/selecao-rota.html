@@ -1,0 +1,68 @@
+<div class="selecao-container">
+
+  <h1>Seleção de rota</h1>
+  <p>Escolha a melhor opção para sua viagem</p>
+
+  <section class="origem-destino-card">
+
+    <div>
+      <small>Origem</small>
+      <h3>FATEC Itu</h3>
+    </div>
+
+    <div>
+      <small>Destino</small>
+      <h3>
+        {{ rotaSelecionada?.destino || 'Selecione uma rota' }}
+      </h3>
+    </div>
+
+  </section>
+
+  <h2>Rotas disponíveis</h2>
+
+  <div
+    class="rota-card"
+    *ngFor="let rota of rotas"
+    (click)="selecionarRota(rota)"
+    [class.selected]="rotaSelecionada === rota">
+
+    <div class="linha">
+      {{ rota.linha }}
+    </div>
+
+    <div class="rota-info">
+
+      <h3>
+        {{ rota.origem }} → {{ rota.destino }}
+      </h3>
+
+      <p>
+        <i class="fas fa-clock"></i>
+        Previsão: {{ rota.horario }}
+      </p>
+
+      <p>
+        <i class="fas fa-route"></i>
+        Tempo estimado: {{ rota.tempo }}
+      </p>
+
+      <span class="status-rota">
+      Trajeto calculado automaticamente
+      </span>
+
+    </div>
+
+  </div>
+
+  <button
+    class="start-btn"
+    (click)="iniciarMonitoramento()">
+
+    Iniciar monitoramento da rota selecionada
+
+  </button>
+
+  <app-navbar></app-navbar>
+
+</div>

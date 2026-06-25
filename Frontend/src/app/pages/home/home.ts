@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -17,6 +18,8 @@ export class Home implements OnInit{
 
     rotas: any[] = [];
 
+    constructor(private router: Router) {}
+
     ativarLocalizacao() {
 
   navigator.geolocation.getCurrentPosition(
@@ -32,7 +35,7 @@ export class Home implements OnInit{
 
     },
 
-    () => {
+    (error) => {
 
       alert(
         'Não foi possível obter sua localização.'
@@ -48,31 +51,64 @@ carregarRotasProximas() {
 
   this.rotas = [
 
-    {
-      linha: '473',
-      origem: 'Centro',
-      destino: 'Terminal Norte',
-      horario: '09:45',
-      tempo: '25 min'
-    },
+     {
+    linha: '080',
+    origem: 'FATEC Itu',
+    destino: 'Rodoviária de Itu',
+    horario: '18:10',
+    tempo: '12 min',
 
-    {
-      linha: '218',
-      origem: 'Bairro Jardim',
-      destino: 'Centro',
-      horario: '09:50',
-      tempo: '32 min'
-    },
+    destinoLat: -23.2677,
+    destinoLng: -47.2996
+  },
 
-    {
-      linha: '560',
-      origem: 'Shopping',
-      destino: 'Terminal Sul',
-      horario: '10:00',
-      tempo: '28 min'
-    }
+  {
+    linha: '031',
+    origem: 'FATEC Itu',
+    destino: 'Plaza Shopping Itu',
+    horario: '18:15',
+    tempo: '18 min',
 
+    destinoLat: -23.2750,
+    destinoLng: -47.2960
+  },
+
+  {
+    linha: '220',
+    origem: 'FATEC Itu',
+    destino: 'Cidade Nova',
+    horario: '18:20',
+    tempo: '25 min',
+
+    destinoLat: -23.2830,
+    destinoLng: -47.3180
+  },
+
+  {
+    linha: '101',
+    origem: 'FATEC Itu',
+    destino: 'Centro de Itu',
+    horario: '18:25',
+    tempo: '10 min',
+
+    destinoLat: -23.2642,
+    destinoLng: -47.2997
+  }
   ];
+
+}
+
+selecionarRota(rota: any) {
+  console.log('Rota clicada:', rota);
+
+  localStorage.setItem(
+    'rotaSelecionada',
+    JSON.stringify(rota)
+  );
+
+   this.router.navigate([
+    '/rota-monitoramento'
+  ]);
 
 }
 
