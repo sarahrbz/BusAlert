@@ -1,1 +1,11 @@
 <router-outlet></router-outlet>
+<div class="mobile-toast" *ngIf="toast.mostrar">
+  <div class="toast-icon">
+    <i class="fas fa-bell"></i>
+  </div>
+
+  <div>
+    <strong>BusAlert</strong>
+    <p>{{ toast.mensagem }}</p>
+  </div>
+</div>

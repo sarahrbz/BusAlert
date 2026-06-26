@@ -1,0 +1,138 @@
+<div class="config-container">
+
+  <header class="config-header">
+
+    <button routerLink="/perfil">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+
+    <div>
+      <h1>Configurações</h1>
+      <p>Personalize sua experiência no BusAlert</p>
+    </div>
+
+    <button routerLink="/notificacoes">
+      <i class="fas fa-bell"></i>
+    </button>
+
+  </header>
+
+  <section class="config-card">
+
+    <h2>
+      <i class="fas fa-bell"></i>
+      Alertas de proximidade
+    </h2>
+
+    <p class="card-subtitle">
+      Receba avisos quando estiver se aproximando do seu ponto de parada.
+    </p>
+
+    <div class="config-item">
+      <div class="distance-circle azul">5<br><span>km</span></div>
+
+      <div>
+        <h3>Alerta a 5 km</h3>
+        <p>Receba um aviso quando faltar 5 km para sua parada.</p>
+      </div>
+
+      <label class="switch">
+        <input
+          type="checkbox"
+          [(ngModel)]="alerta5km"
+          (change)="salvarConfiguracoes()">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="config-item">
+      <div class="distance-circle laranja">3<br><span>km</span></div>
+
+      <div>
+        <h3>Alerta a 3 km</h3>
+        <p>Receba um aviso quando faltar 3 km para sua parada.</p>
+      </div>
+
+      <label class="switch orange">
+        <input
+          type="checkbox"
+          [(ngModel)]="alerta3km"
+          (change)="salvarConfiguracoes()">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="config-item">
+      <div class="distance-circle rosa">500<br><span>m</span></div>
+
+      <div>
+        <h3>Alerta a 500 m</h3>
+        <p>Receba um aviso quando faltar 500 m para sua parada.</p>
+      </div>
+
+      <label class="switch pink">
+        <input
+          type="checkbox"
+          [(ngModel)]="alerta500m"
+          (change)="salvarConfiguracoes()">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+  </section>
+
+  <section class="config-card">
+
+    <h2>
+      <i class="fas fa-volume-high"></i>
+      Notificações
+    </h2>
+
+    <div class="simple-item">
+      <div>
+        <h3>Som das notificações</h3>
+        <p>Ativar som para alertas e notificações</p>
+      </div>
+
+      <label class="switch">
+        <input
+          type="checkbox"
+          [(ngModel)]="somNotificacao"
+          (change)="salvarConfiguracoes()">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="simple-item">
+      <div>
+        <h3>Vibração</h3>
+        <p>Ativar vibração para os alertas</p>
+      </div>
+
+      <label class="switch">
+        <input
+          type="checkbox"
+          [(ngModel)]="vibracao"
+          (change)="salvarConfiguracoes()">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="simple-item">
+  <div>
+    <h3>Permissão de localização</h3>
+    <p>Permite que o BusAlert acesse sua localização para monitorar as rotas.</p>
+  </div>
+
+  <span
+    class="permission-status"
+    [class.permitido]="localizacaoPermitida">
+    {{ localizacaoPermitida ? 'Permitido' : 'Não permitido' }}
+  </span>
+</div>
+
+  </section>
+
+  <app-navbar></app-navbar>
+
+</div>

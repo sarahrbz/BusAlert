@@ -26,4 +26,11 @@ export class Auth {
       login
     );
   }
+
+  alterarSenha(id: number, dados: any) {
+  return this.http.put(
+    `http://localhost:8080/usuarios/${id}/senha`,
+    dados
+  );
+}
 }

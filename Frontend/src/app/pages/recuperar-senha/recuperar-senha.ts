@@ -1,3 +1,4 @@
+import { ToastService } from './../../services/toast-service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -10,21 +11,21 @@ import { Router } from '@angular/router';
 export class RecuperarSenha {
   email = '';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private toast: ToastService) {}
 
 enviar() {
   if(!this.email.trim()){
-    alert('Por favor, informe um e-mail.');
+    this.toast.mostrarToast('Por favor, informe um e-mail.');
     return;
   }
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   if (!emailRegex.test(this.email)) {
-    alert('Informe um e-mail válido.');
+    this.toast.mostrarToast('Informe um e-mail válido.');
     return;
   }
-  alert(`Link enviado para ${this.email}`);
+  this.toast.mostrarToast(`Link enviado para ${this.email}`);
 
   setTimeout(() => {
     this.router.navigate(['/login']);

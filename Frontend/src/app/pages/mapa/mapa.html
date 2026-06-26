@@ -10,7 +10,7 @@
       <p>Acompanhe as rotas em tempo real</p>
     </div>
 
-    <button>
+    <button routerLink="/notificacoes">
       <i class="fas fa-bell"></i>
     </button>
   </header>
@@ -45,7 +45,42 @@
   Trânsito
 </button>
   </section>
+<div class="map-helper-card">
 
+  <div class="helper-icon">
+    <i
+      class="fas"
+      [ngClass]="{
+        'fa-bus': filtroAtivo === 'linhas',
+        'fa-location-dot': filtroAtivo === 'pontos',
+        'fa-traffic-light': filtroAtivo === 'transito'
+      }">
+    </i>
+  </div>
+
+  <div>
+    <strong>
+      {{
+        filtroAtivo === 'linhas'
+          ? 'Linhas em tempo real'
+          : filtroAtivo === 'pontos'
+            ? 'Pontos próximos'
+            : 'Condições de trânsito'
+      }}
+    </strong>
+
+    <p>
+      {{
+        filtroAtivo === 'linhas'
+          ? 'Acompanhe os ônibus e rotas disponíveis.'
+          : filtroAtivo === 'pontos'
+            ? 'Veja os principais pontos de embarque.'
+            : 'Confira trechos com fluxo livre, moderado ou lento.'
+      }}
+    </p>
+  </div>
+
+</div>
   <div id="mapa-geral"></div>
 
   <section class="linhas-card">
@@ -57,7 +92,8 @@
 
     <div
       class="linha-item"
-      *ngFor="let rota of rotas">
+      *ngFor="let rota of rotas"
+      (click)="monitorarRota(rota)">
 
       <div class="linha-numero">
         {{ rota.linha }}

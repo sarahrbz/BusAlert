@@ -2,18 +2,18 @@
 
   <header class="favoritos-header">
 
-    <button class="back-btn">
-      <i class="fas fa-arrow-left"></i>
-    </button>
+    <button class="circle-btn" routerLink="/home">
+  <i class="fas fa-chevron-left"></i>
+</button>
 
     <div>
       <h1>Minhas rotas favoritas</h1>
       <p>Acesse rapidamente suas rotas preferidas</p>
     </div>
 
-    <button class="add-btn">
-      <i class="fas fa-plus"></i>
-    </button>
+    <button class="circle-btn">
+  <i class="fas fa-plus"></i>
+</button>
 
   </header>
 
@@ -48,7 +48,8 @@
 
     <div
       class="rota-card"
-      *ngFor="let rota of favoritos">
+      *ngFor="let rota of favoritos"
+      (click)="abrirRota(rota)">
 
       <div class="linha">
 
@@ -109,7 +110,7 @@
 
     </div>
 
-    <button>
+    <button routerLink="/configuracoes">
       Ativar alarmes
     </button>
 

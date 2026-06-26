@@ -3,6 +3,7 @@ package com.fatec.busalert.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fatec.busalert.dtos.AlterarSenhaRequest;
 import com.fatec.busalert.dtos.LoginRequest;
 import com.fatec.busalert.dtos.UsuarioRequest;
 import com.fatec.busalert.dtos.UsuarioResponse;
@@ -54,5 +55,18 @@ public class UsuarioService {
         
                             
     }
+
+    public void alterarSenha(Long id, AlterarSenhaRequest request) {
+    Usuario usuario = repository.findById(id)
+        .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+
+    if (!usuario.getSenha().equals(request.senhaAtual())) {
+        throw new RuntimeException("Senha atual incorreta");
+    }
+
+    usuario.setSenha(request.novaSenha());
+
+    repository.save(usuario);
+}
     
 }

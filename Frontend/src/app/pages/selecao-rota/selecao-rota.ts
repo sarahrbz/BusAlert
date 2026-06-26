@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastService } from '../../services/toast-service';
 
 @Component({
   selector: 'app-selecao-rota',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 export class SelecaoRota {
    rotaSelecionada: any;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private toast: ToastService) {}
 
   rotas = [
     {
@@ -52,14 +53,14 @@ export class SelecaoRota {
   ];
 
   selecionarRota(rota: any) {
-    console.log('CLICOU NA ROTA:', rota)
+
     this.rotaSelecionada = rota;
   }
 
   iniciarMonitoramento() {
 
     if (!this.rotaSelecionada) {
-      alert('Selecione uma rota antes de iniciar.');
+      this.toast.mostrarToast('Selecione uma rota antes de iniciar.');
       return;
     }
 

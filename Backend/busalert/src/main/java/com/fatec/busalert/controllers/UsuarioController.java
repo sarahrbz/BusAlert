@@ -3,11 +3,14 @@ package com.fatec.busalert.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fatec.busalert.dtos.AlterarSenhaRequest;
 import com.fatec.busalert.dtos.LoginRequest;
 import com.fatec.busalert.dtos.UsuarioRequest;
 import com.fatec.busalert.dtos.UsuarioResponse;
@@ -37,4 +40,13 @@ public class UsuarioController {
 
         return ResponseEntity.ok(response);
     }
+
+    @PutMapping("/{id}/senha")
+public ResponseEntity<Void> alterarSenha(
+    @PathVariable Long id,
+    @RequestBody AlterarSenhaRequest request
+) {
+    service.alterarSenha(id, request);
+    return ResponseEntity.noContent().build();
+}
 }

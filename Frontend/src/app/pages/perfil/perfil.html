@@ -1,47 +1,215 @@
 <div class="perfil-container">
 
   <header class="perfil-header">
-
     <div>
       <h1>Perfil</h1>
       <p>Gerencie suas informações e preferências</p>
     </div>
 
-    <button class="config-btn">
-        <i class="fas fa-gear"></i>
+    <button class="config-btn" routerLink="/configuracoes">
+      <i class="fas fa-gear"></i>
     </button>
-
   </header>
 
   <section class="perfil-card">
 
     <div class="avatar-container">
       <div class="avatar">
-           <i class="fas fa-user"></i>
+        <i class="fas fa-user"></i>
       </div>
-      <button class="camera-btn">
-            <i class="fas fa-camera"></i>
 
-  </button>
+      <button class="camera-btn">
+        <i class="fas fa-camera"></i>
+      </button>
     </div>
 
     <div class="usuario-info">
-
       <h2>{{ usuario?.nome }}</h2>
-
       <p>{{ usuario?.email }}</p>
+
       <span class="badge">
-        <i class="fas fa-medal"></i> Bronze
+        <i class="fas fa-medal"></i>
+        Bronze
       </span>
 
       <div class="profile-meta">
+        <span>
+          <i class="fas fa-calendar"></i>
+          Desde Jun/2025
+        </span>
+      </div>
+    </div>
 
-  <span>
-    <i class="fas fa-calendar"></i>
-    Desde Jun/2025
-  </span>
+  </section>
 
-</div>
+  <section class="info-card">
+
+    <div class="section-header">
+      <h3>Informações pessoais</h3>
+
+      <button
+        class="edit-btn"
+        (click)="editandoPerfil = !editandoPerfil">
+
+        <i class="fas fa-pen-to-square"></i>
+        {{ editandoPerfil ? 'Cancelar' : 'Editar' }}
+
+      </button>
+    </div>
+
+    <div class="info-item">
+
+      <div class="info-icon">
+        <i class="fas fa-user"></i>
+      </div>
+
+      <div class="info-content">
+        <small>Nome completo</small>
+
+        <strong *ngIf="!editandoPerfil">
+          {{ usuario?.nome }}
+        </strong>
+
+        <input
+          *ngIf="editandoPerfil"
+          [(ngModel)]="usuario.nome">
+      </div>
+
+    </div>
+
+    <div class="info-item">
+
+      <div class="info-icon">
+        <i class="fas fa-envelope"></i>
+      </div>
+
+      <div class="info-content">
+        <small>E-mail</small>
+
+        <strong *ngIf="!editandoPerfil">
+          {{ usuario?.email }}
+        </strong>
+
+        <input
+          *ngIf="editandoPerfil"
+          [(ngModel)]="usuario.email">
+      </div>
+
+    </div>
+
+    <div class="info-item">
+
+      <div class="info-icon">
+        <i class="fas fa-phone"></i>
+      </div>
+
+      <div class="info-content">
+        <small>Telefone</small>
+
+        <strong *ngIf="!editandoPerfil">
+          {{ usuario?.telefone || '(15) 99999-9999' }}
+        </strong>
+
+        <input
+          *ngIf="editandoPerfil"
+          [(ngModel)]="usuario.telefone">
+      </div>
+
+    </div>
+
+    <div class="info-item">
+
+      <div class="info-icon">
+        <i class="fas fa-map-marker-alt"></i>
+      </div>
+
+      <div class="info-content">
+        <small>Cidade</small>
+
+        <strong *ngIf="!editandoPerfil">
+          {{ usuario?.cidade || 'Sorocaba - SP' }}
+        </strong>
+
+        <input
+          *ngIf="editandoPerfil"
+          [(ngModel)]="usuario.cidade">
+      </div>
+
+    </div>
+
+    <button
+      class="save-btn"
+      *ngIf="editandoPerfil"
+      (click)="salvarPerfil()">
+
+      Salvar alterações
+
+    </button>
+
+  </section>
+
+  <section class="info-card">
+
+    <h3>Segurança</h3>
+
+    <div
+      class="info-item clickable"
+      (click)="alterandoSenha = !alterandoSenha">
+
+      <div class="info-icon">
+        <i class="fas fa-lock"></i>
+      </div>
+
+      <div class="info-content">
+        <strong>Alterar senha</strong>
+        <small>Atualize sua senha de acesso</small>
+      </div>
+
+      <span class="arrow">›</span>
+
+    </div>
+
+    <div
+      class="password-box"
+      *ngIf="alterandoSenha">
+
+      <input
+        type="password"
+        placeholder="Senha atual"
+        [(ngModel)]="senhaAtual">
+
+      <input
+        type="password"
+        placeholder="Nova senha"
+        [(ngModel)]="novaSenha">
+
+      <input
+        type="password"
+        placeholder="Confirmar nova senha"
+        [(ngModel)]="confirmarSenha">
+
+      <button
+        class="save-btn"
+        (click)="alterarSenha()">
+
+        Alterar senha
+
+      </button>
+
+    </div>
+
+    <div class="info-item">
+
+      <div class="info-icon">
+        <i class="fas fa-shield-halved"></i>
+      </div>
+
+      <div class="info-content">
+        <strong>Privacidade</strong>
+        <small>Gerencie seus dados e permissões</small>
+      </div>
+
+      <span class="arrow">›</span>
 
     </div>
 
@@ -49,233 +217,57 @@
 
   <section class="info-card">
 
-  <div class="section-header">
+    <h3>Sobre</h3>
 
-    <h3>Informações pessoais</h3>
+    <div class="info-item">
 
-    <a class="edit-btn">
-        <i class="fas fa-pen-to-square"></i>
-      Editar
-    </a>
+      <div class="info-icon">
+        <i class="fas fa-circle-info"></i>
+      </div>
 
-  </div>
+      <div class="info-content">
+        <strong>Sobre o BusAlert</strong>
+        <small>Saiba mais sobre o aplicativo</small>
+      </div>
 
-  <div class="info-item">
-
-    <div class="info-icon">
-       <i class="fas fa-user"></i>
-    </div>
-
-    <div class="info-content">
-
-      <small>Nome completo</small>
-
-      <strong>
-        {{ usuario?.nome }}
-      </strong>
+      <span class="arrow">›</span>
 
     </div>
 
-    <span class="arrow">
-      ›
-    </span>
+    <div class="info-item">
 
-  </div>
-
-  <div class="info-item">
-
-    <div class="info-icon">
-        <i class="fas fa-envelope"></i>
-    </div>
-
-    <div class="info-content">
-
-      <small>E-mail</small>
-
-      <strong>
-        {{ usuario?.email }}
-      </strong>
-
-    </div>
-
-    <span class="arrow">
-      ›
-    </span>
-
-  </div>
-
-  <div class="info-item">
-
-    <div class="info-icon">
-        <i class="fas fa-phone"></i>
-
-    </div>
-
-    <div class="info-content">
-
-      <small>Telefone</small>
-
-      <strong>
-        (15) 99999-9999
-      </strong>
-
-    </div>
-
-    <span class="arrow">
-      ›
-    </span>
-
-  </div>
-
-  <div class="info-item">
-
-    <div class="info-icon">
-        <i class="fas fa-map-marker-alt"></i>
-    </div>
-
-    <div class="info-content">
-
-      <small>Cidade</small>
-
-      <strong>
-        Sorocaba - SP
-      </strong>
-
-    </div>
-
-    <span class="arrow">
-      ›
-    </span>
-
-  </div>
-
-</section>
-
-  <section class="info-card">
-
-  <h3>Segurança</h3>
-
-  <div class="info-item">
-
-    <div class="info-icon">
-        <i class="fas fa-lock"></i>
-
-    </div>
-
-    <div class="info-content">
-
-      <strong>
-        Alterar senha
-      </strong>
-
-      <small>
-        Atualize sua senha de acesso
-      </small>
-
-    </div>
-
-    <span class="arrow">
-      ›
-    </span>
-
-  </div>
-
-  <div class="info-item">
-
-    <div class="info-icon">
-        <i class="fas fa-shield-halved"></i>
-
-    </div>
-
-    <div class="info-content">
-
-      <strong>
-        Privacidade
-      </strong>
-
-      <small>
-        Gerencie seus dados e permissões
-      </small>
-
-    </div>
-
-    <span class="arrow">
-      ›
-    </span>
-
-  </div>
-
-</section>
-
-<section class="info-card">
-
-  <h3>Sobre</h3>
-
-  <div class="info-item">
-
-    <div class="info-icon">
-     <i class="fas fa-circle-info"></i>
-
-    </div>
-
-    <div class="info-content">
-
-      <strong>
-        Sobre o BusAlert
-      </strong>
-
-      <small>
-        Saiba mais sobre o aplicativo
-      </small>
-
-    </div>
-
-    <span class="arrow">
-      ›
-    </span>
-
-  </div>
-
-  <div class="info-item">
-
-    <div class="info-icon">
+      <div class="info-icon">
         <i class="fas fa-headset"></i>
+      </div>
+
+      <div class="info-content">
+        <strong>Ajuda e suporte</strong>
+        <small>Central de ajuda e contato</small>
+      </div>
+
+      <span class="arrow">›</span>
 
     </div>
 
-    <div class="info-content">
+  </section>
 
-      <strong>
-        Ajuda e suporte
-      </strong>
-
-      <small>
-        Central de ajuda e contato
-      </small>
-
-    </div>
-
-    <span class="arrow">
-      ›
+  <div class="logout-card" (click)="logout()">
+    <span class="logout-icon">
+      <i class="fas fa-right-from-bracket"></i>
     </span>
 
+    <span>Sair da conta</span>
   </div>
 
-</section>
+  <app-navbar></app-navbar>
+<div class="mobile-toast" *ngIf="mostrarToast">
+  <div class="toast-icon">
+    <i class="fas fa-bell"></i>
+  </div>
 
-<div
-  class="logout-card"
-  (click)="logout()">
-
-  <span class="logout-icon">
-        <i class="fas fa-right-from-bracket"></i>
-
-  </span>
-
-  <span>
-    Sair da conta
-  </span>
-
+  <div>
+    <strong>BusAlert</strong>
+    <p>{{ mensagemToast }}</p>
+  </div>
 </div>
-<app-navbar></app-navbar>
 </div>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Auth } from '../../services/auth';
 import { Router } from '@angular/router';
 import { LoginRequest } from '../../models/login-request';
+import { ToastService } from '../../services/toast-service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,8 @@ export class Login {
 
   constructor(
     private auth: Auth,
-    private router: Router
+    private router: Router,
+    private toast: ToastService
   ) {}
 
   login() {
@@ -39,14 +41,14 @@ export class Login {
     },
 
     error: (error) => {
-      alert('Email ou senha inválidos');
+      this.toast.mostrarToast('Email ou senha inválidos');
     }
   });
   }
 
   loginGoogle() {
 
-  alert(
+  this.toast.mostrarToast(
     'Login com Google será implementado em versão futura.'
   );
 
@@ -54,7 +56,7 @@ export class Login {
 
 loginApple() {
 
-  alert(
+  this.toast.mostrarToast(
     'Login com Apple será implementado em versão futura.'
   );
 

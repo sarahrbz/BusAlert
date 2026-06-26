@@ -1,0 +1,113 @@
+<div class="notificacoes-container">
+
+  <header class="notificacoes-header">
+
+    <button routerLink="/home">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+
+    <div>
+      <h1>Histórico de notificações</h1>
+      <p>Acompanhe todos os avisos e alertas recebidos</p>
+    </div>
+
+    <button (click)="limparNotificacoes()">
+      <i class="fas fa-trash"></i>
+    </button>
+
+  </header>
+
+  <section class="info-card">
+
+    <div class="info-icon">
+      <i class="fas fa-bell"></i>
+    </div>
+
+    <div>
+      <h2>Fique sempre informado</h2>
+      <p>
+        Aqui você encontra todas as notificações que recebeu no BusAlert.
+      </p>
+    </div>
+
+  </section>
+
+  <section class="filtros">
+
+    <button
+      [class.active]="filtroAtivo === 'todas'"
+      (click)="selecionarFiltro('todas')">
+      Todas
+    </button>
+
+    <button
+      [class.active]="filtroAtivo === 'alerta'"
+      (click)="selecionarFiltro('alerta')">
+      Alertas
+    </button>
+
+    <button
+      [class.active]="filtroAtivo === 'rotas'"
+      (click)="selecionarFiltro('rotas')">
+      Rotas
+    </button>
+
+    <button
+      [class.active]="filtroAtivo === 'sistema'"
+      (click)="selecionarFiltro('sistema')">
+      Sistema
+    </button>
+
+  </section>
+
+  <h2 class="section-title">Hoje</h2>
+
+  <section class="lista-notificacoes">
+
+    <div
+      class="notificacao-card"
+      *ngFor="let notificacao of notificacoesFiltradas">
+
+      <div
+        class="notificacao-icon"
+        [class.azul]="notificacao.cor === 'azul'"
+        [class.laranja]="notificacao.cor === 'laranja'"
+        [class.verde]="notificacao.cor === 'verde'">
+
+        <i class="fas {{ notificacao.icone }}"></i>
+
+      </div>
+
+      <div class="notificacao-info">
+
+        <h3>{{ notificacao.titulo }}</h3>
+
+        <p>
+          {{ notificacao.mensagem }}
+        </p>
+
+        <span>
+          <i class="fas fa-bus"></i>
+          {{ notificacao.linha }}
+          {{ notificacao.rota }}
+        </span>
+
+      </div>
+
+      <div class="notificacao-hora">
+        {{ notificacao.hora }}
+      </div>
+
+    </div>
+
+    <p
+      class="empty-message"
+      *ngIf="notificacoesFiltradas.length === 0">
+      Nenhuma notificação encontrada.
+    </p>
+
+  </section>
+
+  <app-navbar></app-navbar>
+
+</div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastService } from '../../services/toast-service';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +19,7 @@ export class Home implements OnInit{
 
     rotas: any[] = [];
 
-    constructor(private router: Router) {}
+    constructor(private router: Router, private toast: ToastService) {}
 
     ativarLocalizacao() {
 
@@ -31,13 +32,23 @@ export class Home implements OnInit{
       this.latitude = position.coords.latitude;
       this.longitude = position.coords.longitude;
 
+      localStorage.setItem('localizacaoAtiva', 'true');
+
+localStorage.setItem(
+  'localizacaoUsuario',
+  JSON.stringify({
+    latitude: this.latitude,
+    longitude: this.longitude
+  })
+);
+
       this.carregarRotasProximas();
 
     },
 
     (error) => {
 
-      alert(
+      this.toast.mostrarToast(
         'Não foi possível obter sua localização.'
       );
 
@@ -92,7 +103,7 @@ carregarRotasProximas() {
 }
 
 selecionarRota(rota: any) {
-  console.log('Rota clicada:', rota);
+
 
   localStorage.setItem(
     'rotaSelecionada',
@@ -112,5 +123,39 @@ selecionarRota(rota: any) {
     if (usuarioSalvo) {
       this.usuario = JSON.parse(usuarioSalvo);
     }
+
+    const localizacaoAtiva =
+  localStorage.getItem('localizacaoAtiva');
+
+const localizacaoUsuario =
+  localStorage.getItem('localizacaoUsuario');
+
+if (
+  localizacaoAtiva === 'true' &&
+  localizacaoUsuario
+) {
+  const localizacao =
+    JSON.parse(localizacaoUsuario);
+
+  this.localizacaoAtiva = true;
+  this.latitude = localizacao.latitude;
+  this.longitude = localizacao.longitude;
+
+  this.carregarRotasProximas();
+}
+
   }
+
+  abrirMapaPontos() {
+
+  this.router.navigate(
+    ['/mapa'],
+    {
+      queryParams: {
+        filtro: 'pontos'
+      }
+    }
+  );
+
+}
 }

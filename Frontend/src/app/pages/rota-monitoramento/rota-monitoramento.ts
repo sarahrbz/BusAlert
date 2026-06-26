@@ -42,6 +42,14 @@ export class RotaMonitoramento implements OnInit {
   alerta3kmEmitido = false;
   alerta500mEmitido = false;
 
+  configAlertas = {
+  alerta5km: true,
+  alerta3km: true,
+  alerta500m: true,
+  somNotificacao: true,
+  vibracao: true
+};
+
   busIcon = L.divIcon({
     html: '<i class="fas fa-bus"></i>',
     className: 'bus-map-icon',
@@ -62,6 +70,11 @@ export class RotaMonitoramento implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    const config = localStorage.getItem('configAlertas');
+
+if (config) {
+  this.configAlertas = JSON.parse(config);
+}
 
     const rota =
       localStorage.getItem('rotaSelecionada');
@@ -319,7 +332,7 @@ export class RotaMonitoramento implements OnInit {
 
   verificarAlertas() {
 
-    if (
+    if (this.configAlertas.alerta5km &&
       this.distanciaRestante <= 5 &&
       !this.alerta5kmEmitido
     ) {
@@ -336,7 +349,7 @@ export class RotaMonitoramento implements OnInit {
       );
     }
 
-    if (
+    if ( this.configAlertas.alerta3km &&
       this.distanciaRestante <= 3 &&
       !this.alerta3kmEmitido
     ) {
@@ -353,7 +366,7 @@ export class RotaMonitoramento implements OnInit {
       );
     }
 
-    if (
+    if ( this.configAlertas.alerta500m &&
       this.distanciaRestante <= 0.5 &&
       !this.alerta500mEmitido
     ) {

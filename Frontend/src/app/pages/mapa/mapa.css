@@ -33,6 +33,48 @@
   font-weight: 600;
 }
 
+.map-helper-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  background: white;
+  border-radius: 18px;
+  padding: 14px 16px;
+
+  margin: 12px 0 16px;
+
+  box-shadow: 0 8px 22px rgba(90, 90, 160, .10);
+}
+
+.helper-icon {
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+  background: #eef1ff;
+  color: #5f73ff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 17px;
+}
+
+.map-helper-card strong {
+  color: #10105f;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.map-helper-card p {
+  color: #85859c;
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 3px;
+}
+
 .search-box {
   background: white;
   border-radius: 20px;

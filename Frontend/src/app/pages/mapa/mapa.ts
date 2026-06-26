@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import * as L from 'leaflet';
 
 delete (L.Icon.Default.prototype as any)._getIconUrl;
@@ -21,6 +22,7 @@ export class Mapa implements OnInit{
   camadasLinhas: any[] = [];
   camadasPontos: any[] = [];
   camadasTransito: any[] = [];
+  filtroInicial = 'linhas';
 
   pontosOnibus = [
   {
@@ -64,6 +66,11 @@ selecionarFiltro(filtro: string) {
 
   if (filtro === 'pontos') {
     this.mostrarPontos();
+
+     this.map.flyTo(
+         [-23.292, -47.296],
+         15
+      );
   }
 
   if (filtro === 'transito') {
@@ -177,7 +184,16 @@ mostrarTransito() {
   });
 }
 
-  constructor(private http: HttpClient){}
+  constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute){}
+
+  monitorarRota(rota: any) {
+  localStorage.setItem(
+    'rotaSelecionada',
+    JSON.stringify(rota)
+  );
+
+  this.router.navigate(['/rota-monitoramento']);
+}
 
   rotas = [
     {
@@ -212,9 +228,18 @@ mostrarTransito() {
   });
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.inicializarMapa();
-    }, 100);
+    this.route.queryParams.subscribe(params => {
+
+    if (params['filtro']) {
+      this.filtroInicial = params['filtro'];
+      this.filtroAtivo = params['filtro'];
+    }
+
+  });
+
+  setTimeout(() => {
+    this.inicializarMapa();
+  }, 100);
   }
 
    inicializarMapa() {
@@ -231,7 +256,7 @@ mostrarTransito() {
       }
     ).addTo(this.map);
 
-     this.mostrarLinhas();
+     this.selecionarFiltro(this.filtroInicial);
 
     this.rotas.forEach((rota) => {
        this.buscarPercursoRota(rota);
@@ -277,9 +302,10 @@ mostrarTransito() {
 
       marker.bindPopup(`
         <strong>Linha ${rota.linha}</strong><br>
-        ${rota.origem} → ${rota.destino}<br>
-        Previsão: ${rota.tempo}
-      `);
+  ${rota.origem} → ${rota.destino}<br>
+  Previsão: ${rota.tempo}<br>
+  <small>Clique no card abaixo para monitorar</small>
+`);
 
       this.camadasLinhas.push(linha, marker);
 

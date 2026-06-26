@@ -9,6 +9,9 @@ import { Perfil } from './pages/perfil/perfil';
 import { RotasFavoritas } from './pages/rotas-favoritas/rotas-favoritas';
 import { SelecaoRota } from './pages/selecao-rota/selecao-rota';
 import { Mapa } from './pages/mapa/mapa';
+import { Notificacoes } from './pages/notificacoes/notificacoes';
+import { HistoricoViagens } from './pages/historico-viagens/historico-viagens';
+import { Configuracoes } from './pages/configuracoes/configuracoes';
 
 const routes: Routes = [
   {
@@ -51,6 +54,18 @@ const routes: Routes = [
   {
     path: 'mapa',
     component: Mapa
+  },
+  {
+    path: 'notificacoes',
+    component: Notificacoes
+  },
+  {
+    path: 'minhas-viagens',
+    component: HistoricoViagens
+  },
+  {
+    path: 'configuracoes',
+    component: Configuracoes
   }
 ];
 

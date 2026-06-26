@@ -1,0 +1,212 @@
+.historico-container {
+  min-height: 100vh;
+  padding: 25px 22px 120px;
+  background: #f8f7ff;
+}
+
+.historico-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.historico-header button {
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  background: white;
+  color: #7585ff;
+  box-shadow: 0 8px 20px rgba(90, 90, 160, .12);
+}
+
+.historico-header h1 {
+  color: #10105f;
+  font-size: 26px;
+  font-weight: 900;
+}
+
+.historico-header p {
+  color: #84849d;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.resumo-card,
+.insights-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #f0eeff;
+  border-radius: 26px;
+  padding: 20px;
+  margin-bottom: 18px;
+}
+
+.resumo-icon,
+.insight-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #fff0d8;
+  color: #7585ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+}
+
+.resumo-card h2,
+.insights-card h3 {
+  color: #10105f;
+  font-size: 17px;
+  font-weight: 900;
+}
+
+.resumo-card p,
+.insights-card p {
+  color: #74748f;
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.stats {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.stats div {
+  flex: 1;
+  background: white;
+  border-radius: 18px;
+  padding: 14px;
+  text-align: center;
+  box-shadow: 0 8px 22px rgba(90, 90, 160, .08);
+}
+
+.stats strong {
+  display: block;
+  color: #5f73ff;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.stats span {
+  color: #85859c;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.filtros {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  margin-bottom: 22px;
+}
+
+.filtros button {
+  border: none;
+  padding: 11px 18px;
+  border-radius: 18px;
+  background: white;
+  color: #777891;
+  font-weight: 800;
+  white-space: nowrap;
+  box-shadow: 0 6px 18px rgba(90, 90, 160, .08);
+}
+
+.filtros .active {
+  background: #5f73ff;
+  color: white;
+}
+
+.viagem-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: white;
+  border-radius: 24px;
+  padding: 18px;
+  margin-bottom: 16px;
+  box-shadow: 0 10px 28px rgba(90, 90, 160, .10);
+}
+
+.linha-box {
+  width: 62px;
+  height: 62px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #5f73ff, #7c89ff);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.linha-box.laranja {
+  background: linear-gradient(135deg, #ff9f1c, #ff861c);
+}
+
+.viagem-info {
+  flex: 1;
+}
+
+.viagem-info small {
+  color: #85859c;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.viagem-info h3 {
+  color: #10105f;
+  font-size: 15px;
+  font-weight: 900;
+  margin: 4px 0;
+}
+
+.viagem-info p {
+  color: #777891;
+  font-size: 12px;
+  font-weight: 600;
+  margin: 3px 0;
+}
+
+.viagem-info i {
+  color: #85859c;
+  margin-right: 5px;
+}
+
+.viagem-info span {
+  display: inline-block;
+  margin-top: 5px;
+  background: #eef0ff;
+  color: #5f73ff;
+  padding: 4px 9px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.duracao {
+  background: #f4f5ff;
+  border-radius: 18px;
+  padding: 12px;
+  text-align: center;
+  min-width: 75px;
+}
+
+.duracao strong {
+  color: #5f73ff;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.duracao p {
+  color: #85859c;
+  font-size: 11px;
+  font-weight: 700;
+}

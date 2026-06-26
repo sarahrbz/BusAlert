@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Auth } from '../../services/auth';
 import { UsuarioRequest } from '../../models/usuario-request';
 import { Router } from '@angular/router';
+import { ToastService } from '../../services/toast-service';
 
 @Component({
   selector: 'app-cadastro',
@@ -18,7 +19,7 @@ export class Cadastro {
 
 
 
-  constructor(private auth: Auth, private router: Router) {}
+  constructor(private auth: Auth, private router: Router, private toast: ToastService) {}
 
   cadastrar() {
 
@@ -30,32 +31,32 @@ export class Cadastro {
     };
 
     if (this.senha !== this.confirmarSenha) {
-      alert('As senhas não coincidem');
+      this.toast.mostrarToast('As senhas não coincidem');
       return;
     }
 
     if(!this.email.trim()){
-      alert('Por favor, informe um e-mail.');
+      this.toast.mostrarToast('Por favor, informe um e-mail.');
       return;
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!emailRegex.test(this.email)) {
-      alert('Informe um e-mail válido.');
+      this.toast.mostrarToast('Informe um e-mail válido.');
       return;
     }
 
     this.auth.cadastrar(usuario)
       .subscribe({
         next: (response) => {
-          console.log('Usuário cadastrado:', response);
-          alert('Cadastro realizado com sucesso!');
+
+          this.toast.mostrarToast('Cadastro realizado com sucesso!');
         },
 
         error: (error) => {
           console.error(error);
-          alert('Erro ao cadastrar usuário');
+          this.toast.mostrarToast('Erro ao cadastrar usuário');
         }
       });
 
@@ -66,7 +67,7 @@ export class Cadastro {
 
   loginGoogle() {
 
-  alert(
+  this.toast.mostrarToast(
     'Cadastro com Google será implementado em versão futura.'
   );
 
@@ -74,7 +75,7 @@ export class Cadastro {
 
 loginApple() {
 
-  alert(
+  this.toast.mostrarToast(
     'Cadastro com Apple será implementado em versão futura.'
   );
 

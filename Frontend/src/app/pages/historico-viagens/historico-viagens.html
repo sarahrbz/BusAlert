@@ -1,0 +1,138 @@
+<div class="historico-container">
+
+  <header class="historico-header">
+
+    <button routerLink="/home">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+
+    <div>
+      <h1>Histórico de viagens</h1>
+      <p>Acompanhe suas viagens anteriores</p>
+    </div>
+
+
+
+  </header>
+
+  <section class="resumo-card">
+
+    <div class="resumo-icon">
+      <i class="fas fa-clipboard-list"></i>
+    </div>
+
+    <div>
+      <h2>Resumo do seu histórico</h2>
+      <p>Confira suas estatísticas dos últimos 30 dias.</p>
+    </div>
+
+  </section>
+
+  <section class="stats">
+    <div>
+      <strong>24</strong>
+      <span>Viagens</span>
+    </div>
+
+    <div>
+      <strong>320 km</strong>
+      <span>Percorridos</span>
+    </div>
+
+    <div>
+      <strong>18h 45m</strong>
+      <span>Tempo total</span>
+    </div>
+  </section>
+
+  <section class="filtros">
+
+    <button
+      [class.active]="filtroAtivo === 'todas'"
+      (click)="selecionarFiltro('todas')">
+      Todas
+    </button>
+
+    <button
+      [class.active]="filtroAtivo === 'hoje'"
+      (click)="selecionarFiltro('hoje')">
+      Hoje
+    </button>
+
+    <button
+      [class.active]="filtroAtivo === 'ontem'"
+      (click)="selecionarFiltro('ontem')">
+      Ontem
+    </button>
+
+    <button
+      [class.active]="filtroAtivo === 'ultimos7'"
+      (click)="selecionarFiltro('ultimos7')">
+      Últimos 7 dias
+    </button>
+
+  </section>
+
+  <section class="viagens-lista">
+
+    <div
+      class="viagem-card"
+      *ngFor="let viagem of viagensFiltradas">
+
+      <div
+        class="linha-box"
+        [class.laranja]="viagem.cor === 'laranja'">
+
+        {{ viagem.linha }}
+
+      </div>
+
+      <div class="viagem-info">
+
+        <small>{{ viagem.data }}</small>
+
+        <h3>
+          {{ viagem.origem }} → {{ viagem.destino }}
+        </h3>
+
+        <p>
+          <i class="fas fa-clock"></i>
+          {{ viagem.horario }}
+        </p>
+
+        <p>
+          <i class="fas fa-location-dot"></i>
+          {{ viagem.paradas }} paradas
+        </p>
+
+        <span>
+          {{ viagem.categoria }}
+        </span>
+
+      </div>
+
+      <div class="duracao">
+        <strong>{{ viagem.duracao }}</strong>
+        <p>Duração</p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="insights-card">
+
+    <div class="insight-icon">
+      <i class="fas fa-chart-column"></i>
+    </div>
+
+    <div>
+      <h3>Insights do seu mês</h3>
+      <p>Você utilizou mais a linha 080 este mês.</p>
+    </div>
+
+  </section>
+
+  <app-navbar></app-navbar>
+
+</div>

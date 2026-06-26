@@ -3,13 +3,10 @@
   <!-- Header -->
   <header>
 
-    <button>
-      <i class="fas fa-bars"></i>
-    </button>
-
     <h2>BusAlert</h2>
 
-    <button>
+    <button class="notification-btn"
+            routerLink="/notificacoes">
       <i class="fas fa-bell"></i>
 
     </button>
@@ -58,7 +55,8 @@
 
     <div class="quick-grid">
 
-      <div class="quick-card">
+      <div class="quick-card"
+      (click)="abrirMapaPontos()">
 
         <div class="icon">
           <i class="fas fa-location-dot"></i>
@@ -84,7 +82,8 @@
 
       </div>
 
-      <div class="quick-card">
+      <div class="quick-card"
+            routerLink="/notificacoes">
 
         <div class="icon"><i class="fas fa-bell"></i></div>
 
@@ -94,7 +93,8 @@
 
       </div>
 
-      <div class="quick-card">
+      <div class="quick-card"
+      routerLink="/minhas-viagens">
 
         <div class="icon">
           <i class="fas fa-ticket"></i>
